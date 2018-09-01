@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="cfg_path" default="/home/eli/catkin_ws/src/detector_server/cfg/" />
+    <arg name="data_file" default="voc.data" />
+    <arg name="cfg_file" default="test.cfg" />
+    <arg name="weight_file" default="model.weights" />
+    <arg name="name_file" default="voc.name" />
+    <arg name="thresh" default="0.5" />
+    <arg name="hier_thresh" default="0.5" />
+    <arg name="nms" default="0.45" />
+
+    <group>
+        <node pkg="obj_detect_server" type="obj_detect" name="obj_detector" required="true" output="screen">
+            <param name="cfg_path" value="$(arg cfg_path)"/>
+            <param name="data_file" value="$(arg data_file)"/>
+            <param name="cfg_file" value="$(arg cfg_file)"/>
+            <param name="weight_file" value="$(arg weight_file)"/>
+            <param name="name_file" value="$(arg name_file)"/>
+            <param name="thresh" value="$(arg thresh)"/>
+            <param name="hier_thresh" value="$(arg hier_thresh)"/>
+            <param name="nms" value="$(arg nms)"/>
+        </node>
+<!--         <node name="rviz" pkg="rviz" type="rviz" required="true" />-->
+    </group>
+</launch>
